@@ -1,11 +1,10 @@
 from flask import Flask, render_template, redirect, request, make_response, \
-    session, jsonify
+    session, jsonify, send_file
 from flask_login import LoginManager, login_user, login_required, logout_user
 from DataBase.forms.user import RegisterForm
 from forms.login import LoginForm
 from data import db_session
 from data.users import User
-# from data.jobs import Jobs
 from data.news import News
 from data import db_session, news_api
 
@@ -69,7 +68,6 @@ def login():
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(
             User.email == form.email.data).first()
-        print(user)
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
@@ -77,6 +75,22 @@ def login():
                                message="Неправильный логин или пароль",
                                form=form)
     return render_template('login.html', title='Авторизация', form=form)
+
+
+@app.route('/downloads')
+def downloads():
+    return render_template("downloads.html")
+
+
+@app.route('/zipfile')
+def download_file():
+    p = 'test.zip'
+    return send_file(p, as_attachment=True)
+
+
+@app.route('/feedback')
+def feedback():
+    return render_template("feedback.html")
 
 
 @app.route('/logout')
@@ -100,32 +114,7 @@ def bad_request(_):
 def main():
     db_session.global_init("db/blogs.db")
 
-    # db_sess = db_session.create_session()  # создаём сессию
-    # news = db_sess.query(News).all()  # выводим новости
-    # print(news)
     app.register_blueprint(news_api.blueprint)
-    # user = User()
-    # user.name = "Пользователь 1"
-    # user.about = "биография пользователя 1"
-    # user.email = "email@email.ru"
-    # db_sess = db_session.create_session()
-    # db_sess.add(user)
-    # db_sess.commit()
-    # # ^ создаём пользователя, но ещё не добавили его
-    # db_sess.add(user)  # добавляем пользователя в базу
-    # db_sess.commit()  # подтверждаем
-
-    # user = User(name='sanya', about='was born? dont die', email='123@123.ru',
-    #             hashed_password='123123')
-    # db_sess = db_session.create_session()
-    # db_sess.add(user)
-    # db_sess.commit()
-
-    # users = db_sess.query(User).all()  # получаем запрос из таблицы (класса) User
-    # есть метод .filter(User.id > 1).filter(можно другое условие, и тд) все, у кого id больше одного
-    # for user in users:
-    #     print(user.name, user.email)
-
     app.run()
 
 
