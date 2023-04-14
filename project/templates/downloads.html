@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <br>
+    <h1>Загрузка файлов</h1>
+
+{% if current_user.is_authenticated %}
+        <a href="{{url_for('download_file')}}">Нажмите здесь для загрузки архива</a>
+{% else %}
+        <br>
+        <h4>Загрузка доступна только авторизованным пользователям!</h4>
+{% endif %}
+{% endblock %}
