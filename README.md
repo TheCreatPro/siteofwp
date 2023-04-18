@@ -39,12 +39,19 @@ ___
 
 
 
-   Пояснительная записка:
+
+
+
+Пояснительная записка:
+   
+   
+   
    При входе на сайт пользователь попадает на главную страницу с новостями и краткой информации о ресурсе. В навигационной панеле присутствует меню, с помощью которого можно перемещаться по странице.
    
-     ![Главная страница](https://github.com/TheCreatPro/siteofwp/blob/main/screenshots/1.png?raw=true(jpg))
+   ![Главная страница](https://github.com/TheCreatPro/siteofwp/blob/main/screenshots/1.png?raw=true(jpg))
+   
    
    Для доступа к загрузке утилиты человеку необходимо авторизироваться или создать новый аккаунт. А после авторизации появляется возможность скачать программу для оптимизации системы абсолютно бесплатно без смс, но с регистрацией.
    
-     ![Регистрация](https://github.com/TheCreatPro/siteofwp/blob/main/screenshots/2.png?raw=true(jpg))
+   ![Регистрация](https://github.com/TheCreatPro/siteofwp/blob/main/screenshots/2.png?raw=true(jpg))
    
