@@ -1,1 +1,7 @@
-h4 {color:red}
+h4 {color:orange}
+h6 {color:#0d798d}
+
+.flex {
+   display: flex;
+   justify-content: space-between;
+}
