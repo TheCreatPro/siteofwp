@@ -20,10 +20,8 @@ class News(SqlAlchemyBase, SerializerMixin):
     user_id = sqlalchemy.Column(sqlalchemy.Integer,
                                 sqlalchemy.ForeignKey("users.id"))
 
-
-
     # вторичный ключ относится на id в таблице users
     user = orm.relationship('User')
     # объект отношения, принимает класс. его нет в базе
     # с помощью этого нам легче узнать все новости этого юзера
-    # Тот самый user. пример: user.news
+    # Тот самый user
